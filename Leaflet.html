@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>道の駅マップ</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        #map { height: 600px; width: 100%; }
+    </style>
+</head>
+<body>
+    <h1>道の駅マップ</h1>
+    <div id="map"></div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // 地図を初期化
+        const map = L.map('map').setView([35.6895, 139.6917], 5); // 東京付近を初期表示
+
+        // OSMタイルを追加
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a>',
+            maxZoom: 19,
+        }).addTo(map);
+
+        // 道の駅のサンプルマーカー
+        L.marker([35.6895, 139.6917]).addTo(map)
+            .bindPopup('サンプル道の駅')
+            .openPopup();
+    </script>
+</body>
+</html>
